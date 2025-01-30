@@ -24,14 +24,14 @@ async def connect_to_mongo():
 
 async def close_mongo_connection():
     global client
-    if client:
+    if client is not None:
         client.close()
         print("MongoDB connection closed")
 
 async def get_db() -> AsyncGenerator:
     global database
     try:
-        if not database:
+        if database is None:
             await connect_to_mongo()
         yield database
     except Exception as e:
@@ -39,6 +39,7 @@ async def get_db() -> AsyncGenerator:
         raise
 
 def get_database():
-    if not database:
+    global database
+    if database is None:
         raise Exception("Database not initialized")
     return database
