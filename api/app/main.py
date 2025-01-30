@@ -29,4 +29,7 @@ async def test_route():
         logger.error(f"Error in test route: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-handler = Mangum(app, lifespan="off") 
+# Define the handler function for AWS Lambda
+def handler(event, context):
+    asgi_handler = Mangum(app, lifespan="off")
+    return asgi_handler(event, context) 
