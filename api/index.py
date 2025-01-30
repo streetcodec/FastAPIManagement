@@ -5,11 +5,7 @@ from app.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection
 from mangum import Mangum
 
-app = FastAPI(
-    title=settings.APP_NAME,
-    description="Car Management System API",
-    version="1.0.0"
-)
+app = FastAPI()
 
 # Add CORS middleware
 app.add_middleware(
@@ -29,6 +25,11 @@ async def shutdown_db_client():
     await close_mongo_connection()
 
 app.include_router(api.router, prefix="/api")
+
+# Simple test route
+@app.get("/api/health")
+async def health_check():
+    return {"status": "ok"}
 
 # Handler for Vercel serverless function
 handler = Mangum(app) 
