@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from mangum import Mangum
+import sys
+import os
+
+# Add the project root to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.routes import api
 from app.config import settings
 from app.core.database import connect_to_mongo, close_mongo_connection
-from mangum import Mangum
 
 app = FastAPI()
 
@@ -24,12 +30,12 @@ async def startup_db_client():
 async def shutdown_db_client():
     await close_mongo_connection()
 
+# Test route
+@app.get("/api/test")
+async def test_route():
+    return {"message": "API is working"}
+
 app.include_router(api.router, prefix="/api")
 
-# Simple test route
-@app.get("/api/health")
-async def health_check():
-    return {"status": "ok"}
-
-# Handler for Vercel serverless function
+# Vercel handler
 handler = Mangum(app) 
