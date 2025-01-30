@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",
+      "src": "api/main.py",
       "use": "@vercel/python",
       "config": {
         "runtime": "python3.9"
@@ -19,7 +19,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.py"
+      "dest": "/api/main.py"
     },
     {
       "handle": "filesystem"
@@ -30,9 +30,9 @@
     }
   ],
   "env": {
-    "MONGODB_URL": "@mongodb-url",
+    "MONGODB_URL": "@MONGODB_URL",
     "DATABASE_NAME": "car_management",
-    "SECRET_KEY": "@secret-key",
+    "SECRET_KEY": "@SECRET_KEY",
     "ALGORITHM": "HS256",
     "ACCESS_TOKEN_EXPIRE_MINUTES": "30"
   }

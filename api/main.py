@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import api
-from app.config import settings
-from app.core.database import connect_to_mongo, close_mongo_connection
+from api.routes import api
+from api.config import settings
+from api.core.database import connect_to_mongo, close_mongo_connection
 
 app = FastAPI(
     title=settings.APP_NAME,

@@ -1,5 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient
-from app.config import settings
+from api.config import settings
 import certifi
 from typing import AsyncGenerator
 
