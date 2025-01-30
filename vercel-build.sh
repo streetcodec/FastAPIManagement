@@ -1,3 +1,6 @@
 #!/bin/bash
-echo "Building..."
-cd frontend && npm install && npm run build 
+echo "Installing dependencies..."
+cd frontend
+npm install
+echo "Building frontend..."
+npm run build 
