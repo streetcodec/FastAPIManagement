@@ -6,10 +6,7 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': {
-        target: 'https://fastapimanagement.onrender.com',
-        changeOrigin: true,
-      },
+      '/api': 'https://fastapimanagement.onrender.com'
     },
   },
 }) 
