@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.routes import api
-from api.config import settings
-from api.core.database import connect_to_mongo, close_mongo_connection
+from app.routes import api
+from app.config import settings
+from app.core.database import connect_to_mongo, close_mongo_connection
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -15,6 +15,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # Local development
+        "https://car-management-system-frontend.vercel.app",  # Vercel production
     ],
     allow_credentials=True,
     allow_methods=["*"],

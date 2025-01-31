@@ -1,7 +1,7 @@
 from bson import ObjectId
 from typing import List, Optional
-from api.models import schemas
-from api.core.security import get_password_hash
+from app.models import schemas
+from app.core.security import get_password_hash
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from datetime import datetime
 
