@@ -14,11 +14,12 @@ A full-stack web application for managing car inventory with user authentication
 
 ## Tech Stack
 
-### Backend
+### Backend 
 - FastAPI
 - MongoDB (with Motor)
 - JWT Authentication
 - Python 3.9+
+- Deployed At : https://fastapimanagement.onrender.com
 
 ### Frontend
 - React 18
@@ -28,5 +29,6 @@ A full-stack web application for managing car inventory with user authentication
 - Axios
 - React Icons
 - React Hot Toast
+- Deployed At : https://fast-api-management.vercel.app
 
-## Project Structure 
+Postman collection to test backend : https://www.postman.com/universal-crater-480180/workspace/showcase/request/24388525-8e6b3e7d-23bb-43cf-b246-b02c623b9aff?action=share&creator=24388525&ctx=documentation
