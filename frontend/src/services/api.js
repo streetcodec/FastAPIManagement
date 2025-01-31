@@ -21,7 +21,7 @@ api.interceptors.request.use(
 
 // Auth services
 export const login = async (credentials) => {
-  const response = await api.post('/token', credentials, {
+  const response = await api.post('/api/token', credentials, {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
@@ -30,7 +30,7 @@ export const login = async (credentials) => {
 };
 
 export const register = async (userData) => {
-  const response = await api.post('/users/', userData);
+  const response = await api.post('/api/users/', userData);
   return response.data;
 };
 
@@ -38,7 +38,7 @@ export const register = async (userData) => {
 export const carService = {
   getAllCars: async (search = '') => {
     try {
-      const response = await api.get('/cars/', {
+      const response = await api.get('/api/cars/', {
         params: { search },
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -54,7 +54,7 @@ export const carService = {
   getCarById: async (id) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await api.get(`/cars/${id}`, {
+      const response = await api.get(`/api/cars/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -68,7 +68,7 @@ export const carService = {
 
   createCar: async (carData) => {
     try {
-      const response = await api.post('/cars/', carData, {
+      const response = await api.post('/api/cars/', carData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -87,7 +87,7 @@ export const carService = {
         Object.entries(carData).filter(([_, v]) => v != null)
       );
       
-      const response = await api.put(`/cars/${id}`, cleanData, {
+      const response = await api.put(`/api/cars/${id}`, cleanData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ export const carService = {
 
   deleteCar: async (id) => {
     try {
-      await api.delete(`/cars/${id}`, {
+      await api.delete(`/api/cars/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
