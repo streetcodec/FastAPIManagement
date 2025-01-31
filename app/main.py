@@ -15,7 +15,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # Local development
-        "https://car-management-system-frontend.vercel.app",  # Vercel production
+        "https://fast-api-management.vercel.app",  # Vercel production
     ],
     allow_credentials=True,
     allow_methods=["*"],
