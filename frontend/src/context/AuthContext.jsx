@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       const data = await loginApi(credentials);
       localStorage.setItem('token', data.access_token);
       setUser({ token: data.access_token });
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login error:', error);
       throw error;
